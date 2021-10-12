@@ -12,7 +12,7 @@ let currentActive = 1;
 // console.log(buttonNext, buttonPrevious, progress, un , deux, trois, quatre);
 
 // console.log(getComputedStyle(progress).height);
-console.log(progress.style.width);
+// console.log(progress.style.width);
 
 // getComputedStyle(progress).height = "50px";
 
@@ -23,7 +23,7 @@ buttonNext.addEventListener("click", () => {
         currentActive = circles.length;
     }
 
-    console.log(currentActive);
+    // console.log(currentActive);
 
     update();
 })
@@ -32,12 +32,35 @@ buttonNext.addEventListener("click", () => {
 buttonPrevious.addEventListener("click", () => {
     currentActive--;
 
-    if (currentActive < circles.length) {
+    if (currentActive < 1) {
         currentActive = 1;
     }
 
-    console.log(currentActive);
+    // console.log(currentActive);
 
     update();
 })
 
+
+function update() {
+    circles.forEach((circle, idx) => {
+        if (idx < currentActive) {
+            circle.classList.add("active");
+        } else {
+            circle.classList.remove("active");
+        }
+    }) 
+
+    const actives = document.querySelectorAll(".active");
+
+    progress.style.width = `${((actives.length - 1)/(circles.length - 1))*100}%`;
+
+    if (currentActive === 1) {
+        buttonPrevious.disabled = true
+    } else if (currentActive === circles.length) {
+        buttonNext.disabled = true
+    } else {
+        buttonNext.disabled = false
+        buttonPrevious.disabled = false
+    }
+}
