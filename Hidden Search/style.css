@@ -13,45 +13,63 @@ html {
 }
 
 body {
-    background-image: linear-gradient(90deg, #7d5fff, #7158e2);
     font-family: 'Roboto', sans-serif;
+    height: 100vh;
+}
+
+.container {
+    background-image: linear-gradient(90deg, #7d5fff, #7158e2);
+    /* background-image: linear-gradient(90deg, #af9ff7, #998adf);
+    background-image: linear-gradient(90deg, #d1c8fa, #aca3d6);
+    background-image: linear-gradient(90deg, #ffef5f, #d4e258); 
+    background-image: linear-gradient(90deg, #1f4753, #07323a); */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 }
+
+
+/*-------------- test ---------------*/
 
 .search {
     position: relative;
     height: 5rem;
 }
 
-.search .input {
-    background-color: #fff;
-    border: 0;
-    font-size: 1.8rem;
-    padding: 1.5rem;
+.input {
     width: 5rem;
     height: 5rem;
-    transition: width .3s ease;
+    padding-left: 1.5rem;
+    font-size: 2rem;
+    background-color: #fff;
+    border: 0;
+    border-radius: .5rem;
+    transition: width .5s ease-out;
 }
 
+.input.active {
+    width: 35rem;
+}
 
-.button {
-    background-color: #fff;
+.input:focus {
+    outline: none;
+}
+
+.btn {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     height: 5rem;
     width: 5rem;
+    background-color: #fff;
     border: 0;
     cursor: pointer;
-    font-size: 2.4rem;
-    transition: transform .3s ease;
-} 
+    border-radius: .5rem;
+}
 
-.btn:focus, 
-.input:focus {
-    ouline: none;
+.btn i {
+    font-size: 2rem;
 }
