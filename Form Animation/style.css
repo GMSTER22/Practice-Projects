@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    background-color: #3535fc;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.6rem;
+}
+
+fieldset {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2rem 4rem;
+    border-radius: 5px;
+    border: 0;
+}
+
+fieldset a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-control {
+    position: relative;
+    width: 30rem;
+    margin: 2rem 0 4rem;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: .2rem #fff solid;
+    width: 100%;
+    display: block;
+    padding: 1.5rem 0;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.form-control input:focus, 
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+
+.form-control label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+button {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    border: 0;
+    background-color: lightblue;
+    font-size: 1.6rem;
+    font-family: inherit;
+    margin-bottom: 3rem;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.text {
+    margin-top: 3rem;
+}
+
+.form-control label span {
+    display: inline-block;
+    cursor: text;
+    font-size: 1.8rem;
+    min-width: .5rem;
+    transition: .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+    color: lightblue;
+    transform: translateY(-3rem);
+}

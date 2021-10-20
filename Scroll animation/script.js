@@ -9,7 +9,7 @@ animation();
 
 
 function animation() {
-    const pointOfActivation = window.innerHeight * 0.8;
+    const pointOfActivation = window.innerHeight * 0.9;
 
     boxes.forEach(box => {
         const boxTop = box.getBoundingClientRect().top;
