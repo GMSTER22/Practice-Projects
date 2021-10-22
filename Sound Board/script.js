@@ -18,6 +18,7 @@ const playSong = (song) => {
 
 sounds.forEach((sound, idx) => {
     sound.addEventListener("click", ()=> {
+        
         switch (idx) {
             case 0:
                 playSong("applause");
