@@ -43,6 +43,15 @@ a {
     font-size: 1.2rem;
     border: .1rem solid white;
     padding: 1rem 4rem;
+    transition: background-color .3s ease;
+}
+
+.ps > a:hover {
+    background-color: rgb(31, 31, 179);
+}
+
+.xbox > a:hover {
+    background-color: rgb(50, 136, 86);
 }
 
 .center {
@@ -53,7 +62,7 @@ a {
 }
 
 .ps {
-    width: 50%;
+    flex: 1;
     /* background-image: url(ps.jpg); */
     background-image: linear-gradient(rgba(96, 96, 255, 0.6), rgba(96, 96, 255, 0.6)), url(ps.jpg);
     background-position: center;
@@ -63,7 +72,7 @@ a {
 }
 
 .xbox {
-    width: 50%;
+    flex: 1;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)), url(xbox.jpg);
     background-position: center;
     background-size: 100% 100%;
@@ -72,5 +81,5 @@ a {
 }
 
 .active {
-    width: 75%;
+    flex: 2;
 }
