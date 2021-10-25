@@ -53,22 +53,24 @@ a {
 }
 
 .ps {
-    flex: 1;
+    width: 50%;
     /* background-image: url(ps.jpg); */
     background-image: linear-gradient(rgba(96, 96, 255, 0.6), rgba(96, 96, 255, 0.6)), url(ps.jpg);
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    transition: all 1s ease;
 }
 
 .xbox {
-    flex: 1;
+    width: 50%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)), url(xbox.jpg);
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    transition: all 1s ease;
 }
 
 .active {
-    flex: 2;
+    width: 75%;
 }
