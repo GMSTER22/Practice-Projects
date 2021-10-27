@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #eee;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+    margin: 3rem;
+}
+
+.faq_container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.faq {
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #3333335e;
+    margin-bottom: 1rem;
+    transition: all .6s ease;
+}
+
+.faq_title {
+    position: relative;
+    font-size: 1.7rem;
+}
+
+.faq_text {
+    display: none;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.faq_icon {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    border: 0;
+    background-color: transparent;
+    font-size: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.fa-solid {
+    font-size: 2rem;
+}
+
+
+/*----active state transition----*/
+
+.faq.active {
+    background-color: white;
+    box-shadow: .5rem .2rem 1rem #242222 ;
+}
+
+.faq.active .faq_text {
+    display: block;
+}
+
+.faq_icon .fa-solid.fa-circle-xmark {
+    display: none;
+}
+
+.faq.active .faq_icon .fa-solid.fa-circle-xmark {
+    display: block;
+}
+
+.faq.active .faq_icon .fa-solid.fa-chevron-down {
+    display: none;
+}
