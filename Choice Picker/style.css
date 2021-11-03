@@ -25,7 +25,7 @@ body {
 
 .container {
     text-align: center;
-    width: 60%;
+    width: 50%;
 }
 
 .instructions {
@@ -49,10 +49,10 @@ ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    width: 100%;
+    max-width: 100%;
 }
 
-ul li {
+.element {
     color: white;
     background-color: tomato;
     padding: .5rem;
@@ -60,8 +60,8 @@ ul li {
     border-radius: 10px;
 }
 
-ul li.pick {
-    background-color: #da17da;
+.element.pick {
+    background-color: yellow;
 }
 
 
