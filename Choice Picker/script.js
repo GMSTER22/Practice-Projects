@@ -1,47 +1,74 @@
-const input = document.querySelector("#choices");
-const list = document.querySelector("ul");
+const textArea = document.querySelector("#choices");
+const list = document.querySelector(".list");
 
-input.addEventListener("keypress", (e) => {
-    
-    let choices;
 
-    const enterCode = e.code;
-    if (enterCode === "Enter") {
-        // console.log(choices.length);
-        choices = input.value.split(",");
-        let li;
+textArea.focus();
 
-        for (let i = 0; i < choices.length ; i++) {
-            li = document.createElement("li");
-            li.classList.add("element")
-            li.innerHTML = choices[i];
-            list.appendChild(li);
-            console.log(li)
-        }
+textArea.addEventListener("keyup", (e) => {
 
-        // function flashText() {
-        //     let randomPick = Math.floor(Math.random() * choices.length);
+    createTags(e.target.value);
 
-        //     if (list.children[randomPick].className === "element") {
-        //         list.children[randomPick].className === "pick"; 
-        //     }
-        // }
+    if (e.key === "Enter") {
 
-        let pick = setInterval( function() {
-            let randomPick = Math.floor(Math.random() * choices.length);
-            list.children[randomPick].classList.add("pick");
-            // list.children[randomPick].classList.remove("pick");
-    
-            setInterval(function() {
-                list.children[randomPick].classList.remove("pick");
-            }, 100)
-    
-        }, 100)
-    
-        // setTimeout( function() {
-        //     clearInterval(pick)
-        // }, 20000);
-    } 
+        setInterval(() => {
+            e.target.value === ""
+        }, 10)
+
+        randomSelect()
+    }
 })
+
+function createTags(input) {
+    const tags = input.split(",").filter(tag => tag.trim() !== "").map(tag => tag.trim())
+
+    list.innerText = ""
+    
+    tags.forEach(tag => {
+        li = document.createElement("li");
+        li.classList.add("tag")
+        li.innerText = tag;
+        list.appendChild(li);
+    });
+}
+
+function randomSelect() {
+    const times = 20
+
+    const interval = setInterval( function() {
+        const randomTag = pickRandomTag();
+
+        highlight(randomTag);
+
+        setTimeout(function() {
+            removeHighlight(randomTag);
+        }, 100)
+
+    }, 100)
+
+    setTimeout( function() {
+        clearInterval(interval)
+
+        setTimeout(() => {
+            const randomTag = pickRandomTag()
+
+            highlight(randomTag)
+        }, 100)
+
+        
+    }, times * 100);
+}
+
+function pickRandomTag() {
+    const tags = document.querySelectorAll(".tag");
+    return tags[Math.floor(Math.random() * tags.length)]
+}
+
+function highlight(tag) {
+    tag.classList.add("pick");
+}
+
+function removeHighlight(tag) {
+    tag.classList.remove("pick");
+}
 
 // pou, bou, zou, kou, dou
