@@ -21,3 +21,5 @@ const getJoke = () => {
                 })
                 .catch(error => console.log("Error:", error))
 }
+
+getJoke()

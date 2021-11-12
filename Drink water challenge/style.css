@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    background-color: rgb(58, 58, 247);
+    padding: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+.goal {
+    margin-bottom: 2rem;
+}
+
+.big_cup {
+    background-color: white;
+    border: .3rem solid blue;
+    color: blue;
+    margin: 0 auto 3rem;
+    width: 15rem;
+    height: 28rem;
+    border-top-right-radius: .2rem;
+    border-top-right-radius: .2rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.small_cups {    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.cups > h4 {
+    margin-bottom: 1rem;
+}
+
+.small_cup {
+    font-size: 1.4rem;
+    background-color: white;
+    border: .3rem solid blue;
+    color: blue;
+    margin: 0 auto;
+    width: 4rem;
+    height: 8rem;
+    border-top-right-radius: .2rem;
+    border-top-right-radius: .2rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    animation: background-image 1s ease;
+}
+
+.small_cup.filled {
+    background-image: linear-gradient(to top, #84bcf0, #84bcf0);
+}
+
+
+
