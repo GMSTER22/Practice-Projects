@@ -50,7 +50,20 @@ h1 {
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
 
-    background-image: linear-gradient(to top, #84bcf0 0, #84bcf0 25%, transparent 25%);
+    background-image: linear-gradient(to top, #84bcf0 0, #84bcf0 0%, transparent 0%);
+}
+
+.remaining_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.percentage_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .small_cups {    
@@ -84,10 +97,6 @@ h1 {
 .small_cup.filled {
     background-image: linear-gradient(to top, #84bcf0, #84bcf0);
 }
-
-/* .big_cup.filled {
-    
-} */
 
 
 

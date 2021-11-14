@@ -11,6 +11,7 @@ const emptyCup = (cup) => {
     cup.classList.remove("filled");
 }
 
+
 for (let i = 0; i < smallCups.length; i++) {
     smallCups[i].addEventListener("click", () => {
         for (let j = 0; j <= i; j++) {
@@ -20,12 +21,25 @@ for (let i = 0; i < smallCups.length; i++) {
                 emptyCup(smallCups[k]);
             }            
         }
-        let percentage = (smallCupsFilled.length/smallCups.length) * 100;
+        const percentage = (smallCupsFilled.length/smallCups.length) * 100;
+        
 
         bigCup.style.backgroundImage = `linear-gradient(to top, #84bcf0 0, #84bcf0 ${percentage}%, transparent ${percentage}%)`;
 
-        bigCup.children[1].textContent = `${percentage}%`;
-        console.log(bigCup.children[1].textContent = `${percentage}%`)
+        if (percentage < 100) {
+            bigCup.children[0].style.display = "flex";
+            bigCup.children[0].innerHTML = `${2 - (percentage/100)*2}L<br> remained`;
+            bigCup.children[0].style.height = `${100 - percentage}%`;
+        } else {
+            bigCup.children[0].style.display = "none";
+        }
+
+        if (percentage === 100) {
+            bigCup.children[1].textContent = `100%`;
+        } else {
+            bigCup.children[1].textContent = `${percentage}%`;
+            bigCup.children[1].style.height = `${percentage}%`;
+        }
         
     })
 }
