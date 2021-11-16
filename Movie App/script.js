@@ -1,8 +1,47 @@
 const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=4ea057cf927e86156d353490f5b479aa&language=en-EN&page=1";
 
-const IMG_PATH = "https://image.tmdb.org/t/p/w500"
+const IMG_PATH = "https://image.tmdb.org/t/p/w1280"
 
-const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=4ea057cf927e86156d353490f5b479aa&query=Jack+Reacher";
+const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=4ea057cf927e86156d353490f5b479aa&query=";
+
+const form = document.querySelector("#form");
+const search = document.querySelector("#search");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault()
+    const searchInput = search.value;
+
+    if (searchInput && searchInput !== "") {
+        getMovies(SEARCH_URL + searchInput);
+
+        movies.forEach(movie => {
+            const { title, vote_average, overview, backdrop_path} = movie;
+    
+            let movieEl = document.createElement("div");
+            movieEl.classList.add("movie");
+    
+            movieEl.innerHTML = `
+            <div class="movie">
+                <img src=${IMG_PATH}${backdrop_path} alt="">
+                <div class="movie-info">
+                    <h3>${title}</h3>
+                    <span class="green">${vote_average}</span>
+                </div>
+                <div class="overview">
+                    <h3>Overview</h3>
+                    ${overview}
+                </div>
+            </div>`
+    
+            container.appendChild(movieEl)
+        });
+
+        search.value = ""
+    } else {
+        window.location.reload()
+    }
+
+})
 
 const container = document.getElementById("main");
 
@@ -11,7 +50,6 @@ const getPopularMovies = getMovies(API_URL);
 async function getMovies (url) {
     const res = await fetch(url);
     const data = await res.json();
-    // console.log(data.results)
     return data.results;
 } 
 
