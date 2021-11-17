@@ -1,49 +1,57 @@
 const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=4ea057cf927e86156d353490f5b479aa&language=en-EN&page=1";
 
-const IMG_PATH = "https://image.tmdb.org/t/p/w1280"
+const IMG_PATH = "https://image.tmdb.org/t/p/w500"
 
 const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=4ea057cf927e86156d353490f5b479aa&query=";
 
+const container = document.getElementById("main");
 const form = document.querySelector("#form");
 const search = document.querySelector("#search");
+
+//Will display the movies the client is searching for
 
 form.addEventListener("submit", function(e) {
     e.preventDefault()
     const searchInput = search.value;
 
     if (searchInput && searchInput !== "") {
-        getMovies(SEARCH_URL + searchInput);
+        container.innerHTML = ""
+        
+        const getSpecificMovie = getMovies(SEARCH_URL + searchInput);
 
-        movies.forEach(movie => {
-            const { title, vote_average, overview, backdrop_path} = movie;
-    
-            let movieEl = document.createElement("div");
-            movieEl.classList.add("movie");
-    
-            movieEl.innerHTML = `
-            <div class="movie">
-                <img src=${IMG_PATH}${backdrop_path} alt="">
-                <div class="movie-info">
-                    <h3>${title}</h3>
-                    <span class="green">${vote_average}</span>
-                </div>
-                <div class="overview">
-                    <h3>Overview</h3>
-                    ${overview}
-                </div>
-            </div>`
-    
-            container.appendChild(movieEl)
-        });
+        getSpecificMovie.then( movies => {
+            
+            movies.forEach(movie => {
+
+                const {title, overview, vote_average, poster_path} = movie;
+
+                let movieEl = document.createElement("div");
+                movieEl.classList.add("movie");
+
+                movieEl.innerHTML = `
+                <div class="movie">
+                    <img src=${IMG_PATH}${poster_path} alt="">
+                    <div class="movie-info">
+                        <h3>${title}</h3>
+                        <span class=${noteColor(vote_average)}>${vote_average}</span>
+                    </div>
+                    <div class="overview">
+                        <h3>Overview</h3>
+                        ${overview}
+                    </div>
+                </div>`
+
+                container.appendChild(movieEl)                
+            })
+        })
 
         search.value = ""
+
     } else {
         window.location.reload()
     }
 
 })
-
-const container = document.getElementById("main");
 
 const getPopularMovies = getMovies(API_URL);
 
@@ -54,19 +62,21 @@ async function getMovies (url) {
 } 
 
 getPopularMovies.then(movies => {
+    
     console.log(movies)
+
     movies.forEach(movie => {
-        const { title, vote_average, overview, backdrop_path} = movie;
+        const { title, vote_average, overview, poster_path} = movie;
 
         let movieEl = document.createElement("div");
         movieEl.classList.add("movie");
 
         movieEl.innerHTML = `
         <div class="movie">
-            <img src=${IMG_PATH}${backdrop_path} alt="">
+            <img src=${IMG_PATH}${poster_path} alt="">
             <div class="movie-info">
                 <h3>${title}</h3>
-                <span class="green">${vote_average}</span>
+                <span class="${noteColor(vote_average)}">${vote_average}</span>
             </div>
             <div class="overview">
                 <h3>Overview</h3>
@@ -78,27 +88,12 @@ getPopularMovies.then(movies => {
     });
 })
 
-
-// getPopularMovies()
-// .then(res => res.json())
-// .then(data => {
-//     let movies = data.results;
-//     console.log(data.results)
-//     movies.forEach(movie => {
-//         let img = document.createElement("img");
-//         img.setAttribute("src",`https://image.tmdb.org/t/p/original${movie.backdrop_path}`)
-//         document.body.appendChild(img)
-//         console.log(movie.title, movie.vote_average, movie.backdrop_path)
-//     });
-// })
-
-
-// const searchMovie = () => {
-//     fetch("https://api.themoviedb.org/3/search/movie?api_key=4ea057cf927e86156d353490f5b479aa&query=Jack+Reacher")
-//     .then((res) => {
-//         return res.json();
-//     })
-//     .then(data => console.log(data))
-// }
-
-// searchMovie()
+function noteColor(vote) {
+    if (vote < 5) {
+        return "red";
+    } else if ( vote < 8) {
+        return "orange";
+    } else {
+        return "green";
+    }            
+}

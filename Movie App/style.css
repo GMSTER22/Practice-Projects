@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 
+
 :root {
-    --primary-color: #22254b;
-    --secondary-color: #373b69;
+    --primary-color: #2d3436;
+    --secondary-color:  #636e72;
+    --tertiairy-color: #b2bec3;
+    /* --primary-color: #22254b;
+    --secondary-color: #373b69; 
+    --tertiairy-color: #7378c5;*/
 
 }
 
@@ -16,11 +21,13 @@
 
 html {
     font-size: 62.5%;
+    position: relative;
 }
 
 body {
     background-color: var(--primary-color);
     font-family: 'Poppins', sans-serif;
+    margin: inherit;
 }
 
 header {
@@ -38,10 +45,11 @@ header {
     font-size: 1rem;    
     padding: .5rem 1rem;
     transition: width .5s ease;
+    color: white;
 }
 
 .search::placeholder {
-    color: #7378c5;
+    color: var(--tertiairy-color);
 }
 
 .search:focus {
@@ -52,21 +60,14 @@ header {
 main {
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
-    /* justify-content: space-between; */
-    padding: 2rem;
-    margin: auto auto;
-}
-
-.movie img {
-    width: 100%;
-    height: 80%;
+    justify-content: space-between;
+    margin: 5rem auto;
+    max-width: 95%;
 }
 
 .movie {
-    width: 28rem;
-    height: 35rem;
-    padding: 0rem;
+    width: 300px;
+    height: 49rem;
     margin-bottom: 2rem;
     background-color: var(--secondary-color);
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
@@ -75,13 +76,23 @@ main {
     border-radius: 3px;
 }
 
+.movie img {
+    width: 100%;
+    height: 90%;
+}
+
 .movie-info {
-    height: 20%;
+    height: 10%;
     color: #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .5rem 1rem 1rem;
+    letter-spacing: .5px;
+}
+
+.movie-info h3 {
+    margin-top: 0;
 }
 
 .movie-info span {
@@ -97,19 +108,21 @@ main {
 }
 
 .movie-info span.orange {
-    color: red;
+    color: orange;
 }
 
 .movie-info span.red {
-    color: lightgreen;
+    color: red;
 }
 
 .overview {
     background-color: #fff;
+    max-width: 100%;
     padding: 2rem;
     position: absolute;
     left: 0;
     bottom: 0;
+    right: 0;
     max-height: 100%;
     transform: translateY(101%);
     transition: transform .3s ease-in;
@@ -118,3 +131,20 @@ main {
 .movie:hover .overview {
     transform: translateY(0%);
 } 
+
+.btns {
+    position: absolute;
+    top: 98.5%;
+    left: 50%;
+    transform: translate(-50%, -98.5%);
+    margin-top: 2rem;
+}
+
+.btns button {
+    width: 10rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 0;
+    padding-top: .2rem .5rem;
+    text-transform: capitalize;
+}
