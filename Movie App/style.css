@@ -128,6 +128,14 @@ main {
     transition: transform .3s ease-in;
 }
 
+.overview h3 {
+    margin-bottom: 1rem;
+}
+
+.overview {
+    font-size: 1.4rem;
+}
+
 .movie:hover .overview {
     transform: translateY(0%);
 } 
@@ -142,9 +150,26 @@ main {
 
 .btns button {
     width: 10rem;
+    background-color: var(--tertiairy-color);
+    color: var(--primary-color);
     font-size: 1.5rem;
+    font-weight: bold;
     cursor: pointer;
     border: 0;
-    padding-top: .2rem .5rem;
+    margin: 1rem;
+    padding: .3rem .5rem;
     text-transform: capitalize;
+    transition: all .1s linear;
+}
+
+.btns button:hover {
+    color: white;
+    background-color: var(--secondary-color);    
+    box-shadow: .1rem .1rem .1rem var(--tertiairy-color);
+}
+
+.btns button:active {
+    color: white;
+    box-shadow: 0 0 0 var(--tertiairy-color);
+    transform: translate(.1rem, .1rem);
 }

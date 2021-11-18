@@ -1,4 +1,4 @@
-const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=4ea057cf927e86156d353490f5b479aa&language=en-EN&page=1";
+let API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=4ea057cf927e86156d353490f5b479aa&language=en-EN&page=`;
 
 const IMG_PATH = "https://image.tmdb.org/t/p/w500"
 
@@ -7,6 +7,21 @@ const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=4ea057cf92
 const container = document.getElementById("main");
 const form = document.querySelector("#form");
 const search = document.querySelector("#search");
+
+const prevBtn = document.querySelector("#previous"); 
+const nextBtn = document.querySelector("#next"); 
+
+
+function getFollowingBtn () {
+
+}
+
+
+prevBtn.addEventListener("click", () => {
+    page > 1 ? page-- : page;
+    return page;
+})
+
 
 //Will display the movies the client is searching for
 
@@ -53,7 +68,14 @@ form.addEventListener("submit", function(e) {
 
 })
 
-const getPopularMovies = getMovies(API_URL);
+let page = 1;
+
+// let getPopularMovies = getMovies(API_URL);
+
+nextBtn.addEventListener("click", () => {
+    page < 500 ? page++ : page;
+    return page;
+})
 
 async function getMovies (url) {
     const res = await fetch(url);
@@ -61,9 +83,7 @@ async function getMovies (url) {
     return data.results;
 } 
 
-getPopularMovies.then(movies => {
-    
-    console.log(movies)
+const getPopularMovies = getMovies(API_URL + page).then(movies => {
 
     movies.forEach(movie => {
         const { title, vote_average, overview, poster_path} = movie;
