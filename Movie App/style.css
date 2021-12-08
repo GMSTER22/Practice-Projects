@@ -2,39 +2,47 @@
 
 
 :root {
-    --primary-color: #2d3436;
-    --secondary-color:  #636e72;
-    --tertiairy-color: #b2bec3;
+    --dark-color : #1a1a1a;
+    --primary-color: #292929;
+    --secondary-color:  #5f5f5f;
+    --tertiairy-color: #cacaca;
+    --color-white: #fff; 
     /* --primary-color: #22254b;
     --secondary-color: #373b69; 
     --tertiairy-color: #7378c5;*/
 }
 
 :root.active {
-    --primary-color: #22254b;
-    --secondary-color: #373b69; 
-    --tertiairy-color: #7378c5;
+    --dark-color: rgba(17, 18, 36, 0.5);
+    --primary-color: rgba(34, 37, 75, 0.5);
+    --secondary-color: rgba(55, 59, 105, 0.5); 
+    --tertiairy-color: rgba(115, 121, 197, 0.5);
 }
 
 :root.active #switch {
-    --primary-color: #22254b;
-    --secondary-color: #373b69; 
-    --tertiairy-color: #7378c5;
+    --dark-color: rgba(17, 18, 36, 0.5);
+    --primary-color: rgba(34, 37, 75, 0.5);
+    --secondary-color: rgba(55, 59, 105, 0.5); 
+    --tertiairy-color: rgba(115, 121, 197, 0.5);
 }
 
 #switch {
-    background-color: var(--tertiairy-color);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--color-white);
     border: 0;
     padding: .1rem .5rem;
     border-radius: 1.5rem;
     cursor: pointer;
     font-weight: bold;
-    transition: all .5s ease;
+    transition: all .3s ease;
 }
 
 #switch:hover {
-    transform: scale(1.1);
+    transform: translateY(-.1rem);
+}
+
+#switch:active {
+    transform: translateY(0rem);
 }
 
 *, 
@@ -72,11 +80,11 @@ header {
     font-size: 1rem;    
     padding: .5rem 1rem;
     transition: width .5s ease;
-    color: white;
+    color: var(--color-white);
 }
 
 .search::placeholder {
-    color: var(--tertiairy-color);
+    color: var(--color-white);
 }
 
 .search:focus {
@@ -127,7 +135,7 @@ main {
     padding: .25rem .5rem;
     border-radius: 3px;
     font-weight: bold;
-    color: white;
+    color: var(--color-white);
 }
 
 .movie-info span.green {
@@ -143,7 +151,7 @@ main {
 }
 
 .overview {
-    background-color: #fff;
+    background-color: var(--color-white);
     max-width: 100%;
     padding: 2rem;
     position: absolute;
@@ -190,13 +198,13 @@ main {
 }
 
 .btns button:hover {
-    color: white;
+    color: var(--color-white);
     background-color: var(--secondary-color);    
     box-shadow: .1rem .1rem .1rem var(--tertiairy-color);
 }
 
 .btns button:active {
-    color: white;
+    color: var(--color-white);
     box-shadow: 0 0 0 var(--tertiairy-color);
     transform: translate(.1rem, .1rem);
 }
@@ -204,6 +212,10 @@ main {
 button:disabled {
     color: var(--tertiairy-color);
 }
+
+/* :root.active {
+    color: transparent;
+} */
 
 button:disabled:hover {
     color: var(--tertiairy-color);
