@@ -32,28 +32,45 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    background-image: url(img/bush.jpg);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
+    transition: .4s;
 }
 
 .container::before {
-    display: block;
     content: "";
-    /* z-index: 10; */
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    width: 100vh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
 }
 
 .slider_box {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: relative;
-    width: 65%;
-    height: 70%;
+    width: 70vw;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.slide {    
+    opacity: 0;
+    background-position: center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100h;
+    position: absolute;
+    top: -15vh;
+    left: -15vw;
+    transition: 0.4s ease;
+    z-index: 1;
+}
+.slide.active {  
+    opacity: 1; 
 }
 
 .slider_box-arrow{
@@ -86,35 +103,4 @@ img {
     border-right-width: 3px;
 
 }
-
-.slider_box-img {
-    margin: 0 auto;
-    width: 90%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-image: url(img/bush.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 172% 177%; */
-}
-
-.slide.active {
-    background-image: url(img/bush.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 172% 177%;
-    width: 100%;
-    height: 100%;
-}
-
-/* .image {
-    display: none;
-}
-
-.image.active {
-    display: block;
-} */
 
