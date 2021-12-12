@@ -7,32 +7,35 @@ dragBox.addEventListener("dragend", dragEnd)
 
 for (const box of dropBoxes) {
     box.addEventListener("dragover", dragOver)
-    box.addEventListener("dragleave", dragLeave)
     box.addEventListener("dragenter", dragEnter)
-    box.addEventListener("dragdrop", dragDrop)
+    box.addEventListener("dragleave", dragLeave)
+    box.addEventListener("drop", dragDrop)
 }
 
 function dragStart() {
-    this.className += "hold"
-    this.className += "invisible"
+    this.className += " hold";    
+    setTimeout(() => { this.className = "invisible"; }, 10);
 }
 
 function dragEnd() {
-    console.log("drag end")
+    this.className = "drag"
 }
 
-function dragOver() {
-    console.log("drag over")
+function dragOver(e) {
+    e.preventDefault()
 }
 
-function dragEnter() {
-    console.log("drag leave")
+function dragEnter(e) {
+    e.preventDefault();
+    this.className += " hovered";
 }
 
 function dragLeave() {
-    console.log("drag leave")
+    this.className = "boxes__drop"
+    console.log("leave")
 }
 
 function dragDrop() {
-    console.log("drag drop")
+    this.className = "boxes__drop";
+    this.append(dragBox);
 }

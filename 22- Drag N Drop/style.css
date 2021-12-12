@@ -17,7 +17,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(42, 42, 206);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     height: 100vh;
 }
@@ -26,10 +26,11 @@ body {
     background-color: #fff;
     width: 20rem;
     height: 20rem;
+    margin: 1rem;
 }
 
 .hold {
-    border: 5px solid #ccc;
+    border: solid 5px #ccc;
 }
 
 .hovered {
@@ -42,6 +43,7 @@ body {
     background-color: red;
     width: 20rem;
     height: 20rem;
+    cursor: pointer;
 }
 
 @media (max-width: 80rem) {
