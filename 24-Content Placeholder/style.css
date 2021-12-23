@@ -36,7 +36,7 @@ img {
 }
 
 .card.active {
-    animation: gradientAnim .2s ease infinite;
+    animation: .1s linear 1s infinite gradientAnim;
 }
 
 
