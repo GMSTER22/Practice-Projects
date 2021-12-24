@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    padding-bottom: 5rem;
+}
+
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+/* navigation */
+
+a {
+    text-decoration: none;
+}
+
+.nav .container li {
+    list-style: none;
+}
+
+.nav .container li a {
+    list-style: none;
+    color: white;
+}
+
+.nav.active .container li a {
+    color: black;
+}
+
+.nav .container li a.active {
+    color: red;
+}
+
+.nav .container li:not(:last-child) {
+    margin-right: 4rem;
+}
+
+.nav {
+    background-color: black;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;    
+    z-index: 2;
+    transition: background-color .3s linear;
+}
+
+.nav.active {
+    background-color: white;
+}
+
+.nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.nav .container .logo a {
+    color: white;
+}
+
+.nav.active .container .logo a {
+    color: black;
+}
+
+.nav .container > ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+    z-index: 1;
+}
+
+.hero::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin: -2rem 0 2rem;
+}
+
+.hero p {
+    font-size: 2rem;
+    letter-spacing: .1rem;
+}
+
+.content h2, .content h3 {
+    font-size: 150%;
+    margin: 1rem 0;
+}
+
+.content p {
+    color: #555;
+    line-height: 3rem;
+    letter-spacing: .12rem;
+}
