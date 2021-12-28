@@ -13,11 +13,48 @@ html {
 }
 
 body {
+    background-color: rgb(106, 108, 250);
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
+.show-notification-btn {
+    padding: 1rem;
+    color: purple;
+    font-size: 1.6rem;
+    font-weight: bold;
+    /* border: none; */
+}
+
+.show-notification-btn:hover {
+    outline: none;
+}
+
+.show-notification-btn:active {
+    outline: none;
+}
+
+ul.notification-list {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    list-style: none;
+}
+
+li.notification-item {
+    margin-bottom: .5rem;
+}
+
+li.notification-item > button {
+    padding: .5rem;
+}
+
+li.notification-item.success > button{ color: green; }
+li.notification-item.failure > button{ color: red; }
+li.notification-item.info > button{ color: purple; }
