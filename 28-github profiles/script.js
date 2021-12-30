@@ -1,55 +1,72 @@
 let userDataHttp = `https://api.github.com/users`;
 
+const container = document.querySelector(".container");
 const form = document.getElementById("form");
 const input = document.getElementById("search");
-const userName = document.querySelector(".user__name");
-const userBio = document.querySelector(".user__bio");
-const numberOfFollowers = document.querySelector(".user__followers");
-const numberOfFollowing = document.querySelector(".user__following");
-const numberOfRepos = document.querySelector(".user__repos");
-const userImg = document.querySelector(".user__img > img");
+
+const user = document.createElement("div");
+user.classList.add("user");
 
 
 form.addEventListener("submit", (e)=> {
     e.preventDefault();
 
-    const searchInput = input.value;
+    const searchInput = input.value.trim().split(" ").join("");
 
     if (searchInput && searchInput !== "" ) {
-        makeReq(userDataHttp, "/bradtraversy")
-        .then(data =>{ 
-            userImg.setAttribute("src", data.avatar_url)
-            userName.textContent = data.name;
-            userBio.textContent = data.bio;
-            numberOfFollowers.textContent = data.followers + "  Followers";
-            numberOfFollowing.textContent = data.following + "  Following";
-            numberOfRepos.textContent = data.public_repos + "  Repos";
+
+        makeReq(userDataHttp, `/${searchInput.trim()}`)
+        .then((data) => { 
+
+            makeReq(userDataHttp, `/${searchInput}` + "/repos")
+            .then(repoData => 
+                        
+            user.innerHTML = 
+                         `            
+                            <div class="user__img">
+                            <img src="${data.avatar_url}" alt="">
+                            </div>
+                            <div class="user__info">
+                            <h3 class="user__name">${data.name}</h3>
+                            <p class="user__bio">${data.bio}</p>
+                            <ul class="user__stats">
+                                <li class="user__followers">${data.followers} <strong>Followers</strong></li>
+                                <li class="user__following">${data.following}<strong>Following</strong></li>
+                                <li class="user__repos">${data.public_repos}<strong>Repos</strong></li>
+                            </ul>
+                            <div class="latest__repos">
+                                <span>${repoData[repoData.length - 1].name}</span>
+                                <span>${repoData[repoData.length - 2].name}</span>
+                                <span>${repoData[repoData.length - 3].name}</span>
+                                <span>${repoData[repoData.length - 4].name}</span>
+                                <span>${repoData[repoData.length - 5].name}</span>
+                            </div>
+                        </div>`
+            )
+
+            container.appendChild(user)
         })
-        // console.log(data.bio)
-        // console.log(data, data.bio);
-        // console.log(res)
-        // console.log(data)
-        // console.log(data.bio)
-        // console.log(data.following)
-        // console.log(data.followers)
-        // console.log(data.public_repos)
-        // console.log(data.name)
+
+        searchInput = ""
     }
 })
 
-const makeReq = async function (url, user="") {    
+
+const makeReq = async function (url, user="", repos ="") {    
     try {
-        const res = await axios.get(url + user);
-        // console.log(res)
-        const data = res.data;
-        // console.log(data)
+        const res = await axios(url + user + repos);
+        const data = await res.data;
         return data;
     } catch(error) {
-        console.log(error, "It didn't work")
+        if (error.response.status == 404) {
+            container.innerHTML = `
+                                <div class="user">
+                                    <h1>No profile for this username</h1>
+                                </div>`
+        }
     }
 }
 
-makeReq(userDataHttp, "/gmster22").then( (data)=> console.log(data.bio, "\n" +data.name, data ))
-
+makeReq(userDataHttp, "/gmster22").then((data)=> console.log(data)).then(makeReq(userDataHttp, "/gmster22", "/repos").then(data=> console.log(data, "repos")))
 
 
