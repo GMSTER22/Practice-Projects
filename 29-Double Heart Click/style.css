@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: antiquewhite;
+    font-family: 'Roboto', sans-serif;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: min(80%, 100rem);
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5rem;
+}
+
+h1 {
+    font-size: 2rem;
+    padding: .5rem;
+}
+
+h1 span {
+    color: red;
+    font-size: 3rem;
+}
+
+p {
+    font-size: 1.6rem;
+    padding: .5rem;
+}
+
+.car {
+    position: relative;
+    background-image: url("https://images.unsplash.com/photo-1617060572415-e37a75e3c5b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y2FyJTIwaW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 20rem;
+    height: 30rem;
+    margin: 0 auto;
+}
+
+.heart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: red;
+    font-size: 2rem;
+    animation: heartAnimation .3s ease;
+}
+
+@keyframes heartAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    35% {
+        transform: scale(2);
+        opacity: .8;
+    }
+    65% {
+        transform: scale(4);
+        opacity: .4;
+    }
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+}
+
