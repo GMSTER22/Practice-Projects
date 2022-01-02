@@ -26,14 +26,24 @@ generateEl.addEventListener("click", () => {
     const hasNumber = numbersEl.checked;
     const hasSymbol = symbolsEl.checked;
 
-    console.log(hasNumber + hasLower)
-
     resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
+
+
+clipboardEl.addEventListener("click", () => {
+    copyPassword(resultEl.innerText);
 })
 
+async function copyPassword(password) {
+    try {
+        await navigator.clipboard.writeText(password)
+    } catch(error) {
+        console.error("Error in copying text: ", err)
+    }
+}
 
 function generatePassword(lower, upper, number, symbol, length) {
-    let generatePassword = "";
+    let generatedPassword = "";
     const typesCount = lower + upper + number + symbol;
     const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
     
@@ -41,8 +51,16 @@ function generatePassword(lower, upper, number, symbol, length) {
         return ""
     }
 
-    for (let i=0)
-    
+    for (let i = 0; i < length; i += typesCount) {
+        typesArr.forEach(type => {
+            const funcName = Object.keys(type)[0];
+            generatedPassword += randomFunc[funcName]();
+        });
+    }
+
+    const finalPassword = generatedPassword.slice(0, length);
+
+    return finalPassword;    
 }
 
 
@@ -61,7 +79,6 @@ function getRandomUpper() {
 function getRandomNumber() {
     return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
 }
-
 
 function getRandomSymbol() {
     const symbols = '!@#$%^&*(){}[]=<>/,.'
