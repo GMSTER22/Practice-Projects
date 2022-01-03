@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background-color: steelblue;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.add {
+    position: absolute;
+    background-color: #bb1972;
+    color: #fff;
+    padding: .5rem 1.5rem;
+    top: 2rem;
+    right: 2rem;
+    border: none;
+    border-radius: .5rem;
+}
+
+.note {
+    background-color: #fff;
+    max-width: 30rem;
+    height: min(30rem, 100%);
+}
+
+.note__options {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #bb1972;
+    padding: .5rem;
+}
+
+.note__options button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 0 .5rem;
+}
+
+.note__options + textarea {
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.note__options + textarea:focus {
+    background-color: #fff;
+    padding: 1rem;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+}
+
