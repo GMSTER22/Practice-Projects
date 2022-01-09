@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: linear-gradient(to right, rgb(181, 181, 245), rgb(209, 184, 241)) ;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.pokemon {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
+    height: 20rem;
+    border-radius: .8rem;
+    padding: 1rem;
+}
+
+/* .pokemon span {
+    display: block;
+} */
+
+.pokemon__image {
+    /* background-color: white; */
+    /* background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 50%;
+}
+
+.pokemon__image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.pokemon__info {
+    height: 50%;
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    justify-content: center; 
+}
+
+.pokemon__info > * {
+    margin-bottom: .5rem;
+}
+
+.pokemon__name {
+    text-transform: capitalize;
+}
+
+.pokemon__number {
+    background-color: rgba(190, 188, 188, 0.438);
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+}
+
