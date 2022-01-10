@@ -24,14 +24,13 @@ body {
 
 .mobile {
     background-color: #fff;
-    width: 20vw;
-    height: 70vh;
+    width: 25vw;
+    height: 80vh;
     border-radius: 1rem;
     padding: .5rem;
 }
 
 .mobile__screen {
-    background-color: red;
     height: 90%;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
@@ -42,11 +41,36 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background-color: blue;
+    padding: 1rem 3rem;
     height: 10%;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+}
+
+.mobile__options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.mobile__options i {
+    font-size: 1.6rem;
+    margin-bottom: .25rem;
+}
+
+.mobile__options:hover {
+    color: blueviolet;
+}
+
+.mobile__options.active {
+    color: blueviolet;
+}
+
+.mobile__menu div span {
+    font-size: 1rem;
 }
 
 img {
