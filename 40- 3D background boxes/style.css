@@ -69,7 +69,9 @@ body {
 }
 
 .box {
-    background-image: url(https://media2.giphy.com/media/GKpWwPclBoBNu/giphy.gif);
+    /* background-image: url(https://media2.giphy.com/media/GKpWwPclBoBNu/giphy.gif); */
+    /* background-image: url(https://media4.giphy.com/media/zgduo4kWRRDVK/giphy.gif?cid=ecf05e47gvnyf95p2kc4wibs1yqmc8toes525cf8l9svi6kl&rid=giphy.gif&ct=g); */
+    background-image: url(https://media0.giphy.com/media/USV0ym3bVWQJJmNu3N/200w.webp?cid=ecf05e47gvnyf95p2kc4wibs1yqmc8toes525cf8l9svi6kl&rid=200w.webp&ct=g);
     background-repeat: no-repeat;
     background-size: 400px 400px;
     position: relative;
