@@ -3,18 +3,52 @@ const search = document.getElementById("search");
 const url = "https://randomuser.me/api/?results=50";
 
 
+function filterUser() {
+    search.addEventListener("input", () => {
+        const searchInput = search.value;
+        const usersName = document.querySelectorAll(".user__name");
+        console.log(search.value)
+        console.log(usersName.innerText)
+    });
+}
+
+filterUser()
+
+
 async function fetchUsers() {
     try {
         const res = await fetch(url);
-        const results = await res.json();
-        return results;
+        const data = await res.json();
+        return data;
     } catch (error) {
-        console.log(error);
+        users.innerHTML = `
+                            <h3 style="text-align: center; padding: 1rem 0; font-size: 1.6rem; color: red;">
+                                    ${error}
+                            </h3">`
     }
-
 }
 
-fetchUsers()
+fetchUsers().then(data =>  {
+                                const users = data.results;
 
-console.log(fetchUsers().then(res=> res.json())
+                                users.forEach(user => {
+                                    createUser(user); 
+                                });
+                            });
 
+
+
+const createUser = (user) => {
+    const userDiv = document.createElement("div");
+    userDiv.classList.add("user");
+
+    const userInfo = `
+                        <img src=${user.picture.medium} alt="User image">
+                        <div class="user__info">
+                            <span class="user__name">${user.name.first} ${user.name.last}</span>
+                            <span class="user__location">${user.location.city}, ${user.location.country}</span>
+                        </div>`;
+
+    userDiv.innerHTML = userInfo;
+    users.appendChild(userDiv);
+}
