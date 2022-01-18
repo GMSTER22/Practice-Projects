@@ -7,12 +7,24 @@ function filterUser() {
     search.addEventListener("input", () => {
         const searchInput = search.value;
         const usersName = document.querySelectorAll(".user__name");
-        console.log(search.value)
-        console.log(usersName.innerText)
+
+        Object.values(usersName).filter(name => {
+
+            // console.log(name)
+
+            if (!name.textContent.includes(searchInput)) {
+                name.parentElement.parentElement.style.display = "none";
+            } else {
+                name.parentElement.parentElement.style.display = "block"
+            }
+
+            // console.log(name.textContent.includes(searchInput))
+            // return name.textContent.indexOf(searchInput); 
+        });        
     });
 }
 
-filterUser()
+filterUser();
 
 
 async function fetchUsers() {
