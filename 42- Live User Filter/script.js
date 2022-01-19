@@ -5,21 +5,16 @@ const url = "https://randomuser.me/api/?results=50";
 
 function filterUser() {
     search.addEventListener("input", () => {
-        const searchInput = search.value;
+        const searchInput = search.value.toLowerCase();
         const usersName = document.querySelectorAll(".user__name");
 
         Object.values(usersName).filter(name => {
 
-            // console.log(name)
-
-            if (!name.textContent.includes(searchInput)) {
+            if (!name.textContent.toLowerCase().includes(searchInput)) {
                 name.parentElement.parentElement.style.display = "none";
             } else {
-                name.parentElement.parentElement.style.display = "block"
+                name.parentElement.parentElement.style.display = "flex";
             }
-
-            // console.log(name.textContent.includes(searchInput))
-            // return name.textContent.indexOf(searchInput); 
         });        
     });
 }
