@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #e5d499e0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.feedback {
+    background-color: #fff;
+    width: 45rem;
+    padding: 3rem 8rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 .2rem 1rem rgba(0, 0, 0, 0.534);
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+}
+
+.feedback__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.option {
+    padding: 1.5rem;
+    cursor: pointer;
+}
+
+.option > span {
+    display: block;
+}
+
+.option.active {
+    border-radius: 1rem;
+    box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, 0.37);
+}
+
+.option > .fa-solid {
+    color: rgb(255, 168, 7);
+    font-size: 3rem;
+    padding-bottom: 1rem;
+}
+
+.option__text {
+    font-size: 1.5rem;
+}
+
+.btn {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    outline-color: transparent;
+    transition: all .3s ease;
+}
+
+.btn:active {
+    outline-color: transparent;
+    transform: translateY(.2rem);
+}
+
+
+.thanks {
+    background-color: #fff;
+    max-width: 45rem;
+    padding: 3rem 8rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 .2rem 1rem rgba(0, 0, 0, 0.534);
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.thanks > .fa-solid {
+    font-size: 3rem;
+    color: red;
+}
+
+.thanks > span {
+    display: block;
+}
+
+.thanks > span:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+}
+
