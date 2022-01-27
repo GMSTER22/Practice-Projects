@@ -9,16 +9,6 @@ const inputEl = document.querySelectorAll("input[type='radio']");
 const choicesBox = document.querySelector(".choices");
 const answers = document.querySelectorAll("label");
 
-// console.log(inputEl);
-inputEl.forEach(element => {
-    // element.checked === true;
-    // console.log(element.nextElementSibling)
-    if (element.checked === true) {
-        console.log(element.nextElementSibling.innerText);
-    }
-    // console.log(element.checked)
-});
-
 const quizData = [
     { 
         question: "Which language runs in a web browser?",
@@ -38,16 +28,15 @@ const quizData = [
     }
 ];
 
+const correctAnswers = [quizData[0].answers[3], quizData[1].answers[1], quizData[2].answers[0], quizData[3].answers[0]];
 let i = 0;
+let givenAnswers = [];
+let testScore = 0;
 
 askQuestion();
 
 function askQuestion(i=0) {
     const questionShown = quizData[i];
-
-    inputEl.forEach(element => {
-        element.checked = false;
-    });
 
     question.innerText = questionShown["question"];
     answewrA.innerText = questionShown["answers"][0];
@@ -58,16 +47,38 @@ function askQuestion(i=0) {
 
 submitBtn.addEventListener("click", () =>  {
     i++;
-    
+
+    inputEl.forEach(element => {
+        if (element.checked === true) {
+            givenAnswers.push(element.nextElementSibling.innerText);
+        }
+
+        element.checked = false;
+    });
+
     if (i < answers.length) {
+        console.log(i)
         askQuestion(i);
-    } else {
-        console.log(i, "Upload");
+    } else if (i === answers.length) {
         choicesBox.innerHTML = ""
         question.innerHTML = "Your result is: "
         submitBtn.innerText = "Reload";
-        i = 0;
-        askQuestion(i)
+        // console.log(givenAnswers);
+        checkAnswers(givenAnswers);
+        // askQuestion(i);
     }
 
+    console.log(givenAnswers, i);
 });
+
+function checkAnswers(answers) {
+
+    for (let i = 0; i < answers.length; i++) {
+        if (answers[i] = correctAnswers[i]) {
+            testScore++;
+        }
+    }
+
+    choicesBox.innerHTML = `<h2>Your score is: ${testScore}</h2>`;
+    console.log("your score is " + testScore)
+}

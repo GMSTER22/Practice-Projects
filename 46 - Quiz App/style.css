@@ -26,13 +26,16 @@ body {
     position: relative;
     background-color: #fff;
     width: 50rem;
-    height: 30rem;
-    padding: 6rem;
+    /* padding: 6rem; */
     border-radius: 1rem;
     font-size: 1.6rem;
 }
 
-.container > h2 {
+.choices {
+    padding: 4rem;
+}
+
+.choices > h2 {
     font-size: 2rem;
     width: 80%;
     margin: 0 auto;
@@ -51,9 +54,6 @@ ul {
 }
 
 .btn {
-    position: absolute;
-    left: 0;
-    bottom: 0;
     background-color: purple;
     color: white;
     width: 100%;
