@@ -8,6 +8,7 @@ const submitBtn = document.getElementById("submit");
 const inputEl = document.querySelectorAll("input[type='radio']");
 const choicesBox = document.querySelector(".choices");
 const answers = document.querySelectorAll("label");
+const displayScore = document.querySelector(".score");
 
 const quizData = [
     { 
@@ -60,25 +61,28 @@ submitBtn.addEventListener("click", () =>  {
         console.log(i)
         askQuestion(i);
     } else if (i === answers.length) {
-        choicesBox.innerHTML = ""
-        question.innerHTML = "Your result is: "
+        choicesBox.style.display = "none";
         submitBtn.innerText = "Reload";
-        // console.log(givenAnswers);
         checkAnswers(givenAnswers);
-        // askQuestion(i);
+        displayScore.innerText = `Your score is: ${testScore}`
+        displayScore.style.display = "block";
+    } else {
+        displayScore.style.display = "none";
+        choicesBox.style.display = "block";
+        submitBtn.innerText = "Submit";
+        i = 0;
+        givenAnswers = [];
+        testScore = 0;
+        askQuestion(i);
     }
 
-    console.log(givenAnswers, i);
 });
 
 function checkAnswers(answers) {
 
     for (let i = 0; i < answers.length; i++) {
-        if (answers[i] = correctAnswers[i]) {
+        if (answers[i] == correctAnswers[i]) {
             testScore++;
         }
     }
-
-    choicesBox.innerHTML = `<h2>Your score is: ${testScore}</h2>`;
-    console.log("your score is " + testScore)
 }

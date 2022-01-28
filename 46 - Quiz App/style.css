@@ -26,7 +26,6 @@ body {
     position: relative;
     background-color: #fff;
     width: 50rem;
-    /* padding: 6rem; */
     border-radius: 1rem;
     font-size: 1.6rem;
 }
@@ -47,10 +46,20 @@ ul {
     list-style: none;
 }
 
+.choices > ul > li > * {
+    cursor: pointer;
+}
+
 .choices input[type="radio"] {
     /* display: block; */
     margin-right: .5rem;
     margin-bottom: 1rem;
+}
+
+.score {
+    display: none;
+    text-align: center;
+    padding: 2rem;
 }
 
 .btn {
