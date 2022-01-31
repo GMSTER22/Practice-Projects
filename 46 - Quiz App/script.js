@@ -58,7 +58,6 @@ submitBtn.addEventListener("click", () =>  {
     });
 
     if (i < answers.length) {
-        console.log(i)
         askQuestion(i);
     } else if (i === answers.length) {
         choicesBox.style.display = "none";
