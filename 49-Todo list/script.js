@@ -1,36 +1,63 @@
 const input = document.getElementById("input");
 const tasksContainer = document.getElementById("tasks");
-const tasks = document.querySelectorAll(".task");
+let tasks = document.querySelectorAll(".task");
+const savedTasks = []
 
-input.addEventListener("keydown", (e) => {
 
-    if (e.code === "Enter") {
-        if (!input.value) { 
-            return alert("enter your task") 
-        };
+insertTask();
 
-        console.log("clicked", input.value)
-        addTask()
-        input.value = ""
-    }
-});
+function insertTask() {
+    input.addEventListener("keydown", (e) => {
 
-function addTask() {
+        if (e.code === "Enter") {
+            if (input.value.length === 0) { 
+                return alert("enter your task") 
+            };
+            
+            addTask(input.value);
+            savedTasks.push(input.value)
+            window.localStorage.setItem("todoList", JSON.stringify(savedTasks))
+            input.value = "";
+        }
+    });
+}
+
+parseList();
+
+function parseList() {
+    const taskList = JSON.parse(window.localStorage.getItem('todoList'));
+
+    taskList.forEach(task => {
+        addTask(task)
+    });
+}
+
+window.localStorage.getItem('todoList');
+console.log(JSON.parse(window.localStorage.getItem('todoList')));
+
+
+function addTask(task) {
     const listElement = document.createElement("li");
     listElement.classList = "task";
-    listElement.innerHTML = input.value;
+    listElement.innerHTML = task;
     tasksContainer.appendChild(listElement);
 }
 
-tasks.forEach(task => {
-    console.log(task)
-    task.addEventListener( "contextmenu", (e) => {
-        e.preventDefault();
-        task.remove();
-    });
-    
-    task.addEventListener( "click", (e) => {
-        e.preventDefault();
-        task.classList.toggle("complete");
-    });
+tasksContainer.addEventListener("contextmenu", (e)=> {
+    e.preventDefault();
+
+    //check if left click
+    if (e.button === 2) {
+        e.target.remove();
+    } 
+});
+
+tasksContainer.addEventListener("mousedown", (e)=> {
+
+    //check if right click
+    if (e.button === 0) {
+        e.target.classList.toggle("complete");
+    } else if (e.button === 1) {
+        input.value =  e.target.innerHTML;    
+    }
 });
