@@ -26,13 +26,13 @@ h1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: red;
     margin: 0 auto;
     /* padding: 1rem; */
-    width: 99.2rem;
+    max-width: 99.2rem;
 }
 
-.container > img {
+.container img {
+    object-fit: cover;
     width: 30rem;
     height: 30rem;
     margin: 1rem;
