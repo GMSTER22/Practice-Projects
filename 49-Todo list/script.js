@@ -1,7 +1,7 @@
 const input = document.getElementById("input");
 const tasksContainer = document.getElementById("tasks");
 let tasks = document.querySelectorAll(".task");
-const savedTasks = []
+let savedTasks = JSON.parse(window.localStorage.getItem("todoList"));
 
 
 insertTask();
@@ -13,10 +13,11 @@ function insertTask() {
             if (input.value.length === 0) { 
                 return alert("enter your task") 
             };
-            
+
             addTask(input.value);
-            savedTasks.push(input.value)
-            window.localStorage.setItem("todoList", JSON.stringify(savedTasks))
+            savedTasks.push(input.value);
+            window.localStorage.setItem("todoList", JSON.stringify(savedTasks));
+            console.log(JSON.parse(window.localStorage.getItem("todoList")), "first");
             input.value = "";
         }
     });
@@ -25,16 +26,10 @@ function insertTask() {
 parseList();
 
 function parseList() {
-    const taskList = JSON.parse(window.localStorage.getItem('todoList'));
-
-    taskList.forEach(task => {
-        addTask(task)
+    savedTasks.forEach(task => {
+        addTask(task);
     });
 }
-
-window.localStorage.getItem('todoList');
-console.log(JSON.parse(window.localStorage.getItem('todoList')));
-
 
 function addTask(task) {
     const listElement = document.createElement("li");
@@ -48,6 +43,11 @@ tasksContainer.addEventListener("contextmenu", (e)=> {
 
     //check if left click
     if (e.button === 2) {
+        savedTasks = JSON.parse(window.localStorage.getItem('todoList'));
+        const elementIdx = savedTasks.indexOf(e.target.innerText);
+        savedTasks.splice(elementIdx, 1);
+        console.log(savedTasks);
+        window.localStorage.setItem("todoList", JSON.stringify(savedTasks));
         e.target.remove();
     } 
 });
